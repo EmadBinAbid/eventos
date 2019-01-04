@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventService } from '../services/Event/event.service';
+import { Event } from '../interfaces/event.interface';
 
 @Component({
   selector: 'app-event-list',
@@ -8,36 +10,14 @@ import { Router } from '@angular/router';
 })
 export class EventListPage implements OnInit {
 
-  events: Array<{ title: String, description: String }>;
+  allEvents: Array<Event>;
   
-  constructor(private router: Router)
+  constructor(
+    private router: Router,
+    private eventService: EventService
+  )
   {
-    this.events = [
-      {
-        title: 'First Event',
-        description: 'Event was created ...'
-      },
-      {
-        title: 'Second Event',
-        description: 'Event was created ...',
-      },
-      {
-        title: 'Third Event',
-        description: 'Event was created ...',
-      },
-      {
-        title: 'Fourth Event',
-        description: 'Event was created ...',
-      },
-      {
-        title: 'Fifth Event',
-        description: 'Event was created ...',
-      },
-      {
-        title: 'Sixth Event',
-        description: 'Event was created ...',
-      }
-    ];
+    this.allEvents = this.eventService.getAllEvents();
   }
 
   ngOnInit() {
@@ -45,6 +25,7 @@ export class EventListPage implements OnInit {
 
   eventProfile(i)
   {
+    this.eventService.setActiveEvent(this.allEvents[i]);
     console.log(i);
     this.router.navigateByUrl('/events/event-list/event-profile');
   }

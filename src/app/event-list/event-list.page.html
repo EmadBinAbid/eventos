@@ -12,7 +12,7 @@
 
 <ion-content>
         <ion-list>
-          <ion-item *ngFor="let e of events; let i=index" (click)="eventProfile(i)">
+          <ion-item *ngFor="let e of allEvents; let i=index" (click)="eventProfile(i)">
             <ion-label>{{ i+1 }}. {{ e.title }} </ion-label><br>
             <div>{{ e.description }}</div><br>
             <div>{{ e.date }}</div>

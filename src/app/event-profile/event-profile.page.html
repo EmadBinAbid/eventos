@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>eventProfile</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ eventName }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    Categories
+    <ion-item *ngFor="let c of allCategories; let i=index" (click)="abcd()">
+      <ion-label>{{ c.name }} </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
