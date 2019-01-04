@@ -1,0 +1,14 @@
+<ion-content padding>
+  <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()" class="login-form">
+    <mat-form-field class="login-full-width">
+      <input matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
+    
+    <mat-form-field class="login-full-width">
+      <input matInput type="password" placeholder="Password" formControlName="password">
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" class="login-full-width" [disabled]="!loginForm.valid">Login</button>
+  </form>
+  <p>New to Eventos? <span style="text-decoration: underline" (click)="registerRoute()">Register</span></p>
+</ion-content>

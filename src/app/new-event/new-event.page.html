@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        New Event
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+
+  <ion-content padding>
+      <form [formGroup]="newEventForm" (ngSubmit)="newEventSubmit()" class="event-form">
+        <mat-form-field class="event-full-width">
+          <input matInput placeholder="Event name" formControlName="eventName">
+        </mat-form-field>
+        
+        <mat-form-field class="event-full-width">
+          <input matInput placeholder="Description" formControlName="description">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-select placeholder="Event type" formControlName="eventType">
+              <mat-option *ngFor="let t of eventTypes" [value]="t.value">
+                {{t.title}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" class="event-full-width" [disabled]="!newEventForm.valid">Create</button>
+      </form>
+    </ion-content>
